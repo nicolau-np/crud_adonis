@@ -1,7 +1,7 @@
 'use strict'
 
 const Post = use('App/Models/Post')
-const validate = use('Validator')
+const { validate } = use('Validator')
 
 
 class PostController {
@@ -37,8 +37,8 @@ class PostController {
 
   async store({ request, response, session }){
     const validation = await validate(request.all(), {
-      title: 'required|string|min:3|max:255',
-      body: 'required|string|min:3'
+      title: 'required|min:3|max:255',
+      body: 'required|min:3'
     })
     if(validation.fails()){
       session.withErrors(validation.messages()).flashAll()
