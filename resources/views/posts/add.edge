@@ -1,0 +1,18 @@
+@layout('layout.main')
+@section('content')
+<a href="/">Voltar</a>
+<hr>
+@if(old('notification'))
+<span style="color:green">{{ old('notification') }}</span>
+@endif
+<form action="/posts/store" method="post">
+    {{ csrfField() }}
+    <input type="text" name="title" id="title" placeholder="Titulo">
+    <br/><br/>
+    <textarea name="body" id="body" cols="30" rows="10" placeholder="NOticia">
+
+    </textarea>
+    <br/><br/>
+    <input type="submit" value="Enviar">
+</form>
+@endsection

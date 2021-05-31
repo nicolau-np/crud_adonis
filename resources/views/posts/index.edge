@@ -1,0 +1,22 @@
+@layout('layout.main')
+@section('content')
+<a href="/posts/add">Novo</a>
+<hr>
+
+  <table border="1">
+    <thead>
+      <tr>
+      <td>Titulo</td>
+    </tr>
+    </thead>
+    <tbody>
+      @each(post in posts)
+      <tr>
+      <td><a href="/posts/{{post.id}}">{{post.title}}</a></td>
+      </tr>
+
+      @endeach
+
+    </tbody>
+  </table>
+@endsection
