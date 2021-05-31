@@ -7,12 +7,14 @@
 @endif
 <form action="/posts/store" method="post">
     {{ csrfField() }}
-    <input type="text" name="title" id="title" placeholder="Titulo">
+<input type="text" name="title" id="title" placeholder="Titulo" value="{{old('title', '')}}">
+{{elIf('<div class="text-danger">$self</div>', getErrorFor('title'), hasErrorFor('title'))}}
     <br/><br/>
-    <textarea name="body" id="body" cols="30" rows="10" placeholder="NOticia">
-
+    <textarea name="body" id="body" cols="30" rows="10" placeholder="Noticia">
+      {{old('body', '')}}
     </textarea>
-    <div class="text-danger"></div>
+    {{elIf('<div class="text-danger">$self</div>', getErrorFor('body'), hasErrorFor('body'))}}
+
     <br/><br/>
     <input type="submit" value="Enviar">
 </form>
